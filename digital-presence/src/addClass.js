@@ -12,8 +12,9 @@ import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Stack from '@mui/material/Stack';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
-
+import Checkbox from '@mui/material/Checkbox';
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import ListOfTeachers from './listOfTeachers';
 
 const theme = createTheme({
     direction: 'rtl', // Both here and <body dir="rtl">
@@ -25,8 +26,8 @@ const cacheRtl = createCache({
 });
 
 const AddClass = () => {
-    return (<>
-        <CacheProvider value={cacheRtl}>
+    return (<div direction="rtl">
+        <CacheProvider value={cacheRtl}> 
             <ThemeProvider theme={theme}>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -37,25 +38,28 @@ const AddClass = () => {
                     </Box>
                 </Box>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
-                <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                        <InputLabel id="demo-simple-select-standard-label">סוג מוסד</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-standard-label"
-                            id="demo-simple-select-standard">
-                            <MenuItem value={10}>מעון / גן</MenuItem>
-                            <MenuItem value={15}>ביה"ס</MenuItem>
-                        </Select>
-                    </FormControl>
-</Box>
+                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                            <InputLabel id="demo-simple-select-standard-label">סוג מוסד</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-standard-label"
+                                id="demo-simple-select-standard">
+                                <MenuItem value={10}>מעון / גן</MenuItem>
+                                <MenuItem value={15}>ביה"ס</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
                 </Box>
-                <Stack direction="row" spacing={2}>
+              
+                <div>מורות הקבוצה</div>
+               <ListOfTeachers/>
+               <Stack direction="row" spacing={2} >
                     <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />}>
                         הרשם
                     </Button>
                 </Stack>
             </ThemeProvider>
         </CacheProvider>
-    </>);
+    </div>);
 }
 export default AddClass;
