@@ -9,7 +9,6 @@ import Box from '@mui/material/Box';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Button } from '@mui/material';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Stack from '@mui/material/Stack';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
