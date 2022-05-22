@@ -4,13 +4,15 @@ import './App.css';
 import Login from './login';
 import PresencePage from './presencePage';
 
+
 function App() {
-  return (
-    <>
-      <Login />
-      <PresencePage />
-    </>
-  );
+
+
+  return (<>
+
+  </>);
+ 
 }
+
 
 export default App;
