@@ -5,14 +5,40 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const PresencePage = () => {
+
+  const arr = [
+    { name: "h", presence: true, permition: false },
+    { name: "i", presence: false, permition: true },
+    { name: "g", presence: true, permition: true },
+  ];
+
+  const arrMap = arr.map(item =>
+  (<TableRow>
+    <TableCell scope="row">{item.name}</TableCell>
+    <TableCell>
+      <FormControlLabel control={<Checkbox defaultChecked />} />
+    </TableCell>
+    <TableCell component="th" scope="row">
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 50 }}>
+        <InputLabel id="demo-simple-select-standard-label">סיבה</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard">
+          <MenuItem value=""><em>None</em></MenuItem>
+          <MenuItem value={10}>מאושר</MenuItem>
+          <MenuItem value={15}>לא מאושר</MenuItem>
+        </Select>
+      </FormControl>
+    </TableCell>
+  </TableRow >));
+
   return (
-    <TableContainer sx={{ direction: "rtl" }}>
+    <TableContainer table sx={{ direction: "rtl" }}>
       <Table sx={{ minWidth: 50 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
@@ -21,31 +47,7 @@ const PresencePage = () => {
             <TableCell align="right">סיבה</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {() => (
-            <TableRow>
-              <TableCell scope="row">יצחק</TableCell>
-              <TableCell>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
-              </TableCell>
-              <TableCell component="th" scope="row">
-                <FormControl variant="standard" sx={{ m: 1, minWidth: 50 }}>
-                  <InputLabel id="demo-simple-select-standard-label">סיבה</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard"
-                    label="Age">
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>מאושר</MenuItem>
-                    <MenuItem value={20}>לא מאושר</MenuItem>
-                  </Select>
-                </FormControl>
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
+        <TableBody>{arrMap}</TableBody>
       </Table>
     </TableContainer>
   );

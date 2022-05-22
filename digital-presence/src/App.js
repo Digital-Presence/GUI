@@ -7,7 +7,7 @@ import PresencePage from './presencePage';
 function App() {
   return (
     <>
-      {/* <Login /> */}
+      <Login />
       <PresencePage />
     </>
   );

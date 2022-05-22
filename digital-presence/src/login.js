@@ -7,8 +7,8 @@ const Login=()=>{
 
     return(
         <div className="login">
-            <Card>
-                    <Container
+            <Card >
+                    <Container 
                         component="main" maxWidth="xs">
                         <CssBaseline />
                         <Box sx={{
@@ -22,7 +22,7 @@ const Login=()=>{
                                 component="h1" variant="h5">
                                 כניסה          </Typography>
                             <Box className="box2" component="form" noValidate >
-                                <TextField
+                                <TextField dir="rtl"
                                     margin="normal"
                                     required
                                     fullWidth
@@ -34,7 +34,7 @@ const Login=()=>{
                                 />
                                 <FormControl fullWidth required variant="outlined">
                                     <InputLabel htmlFor="password">סיסמא</InputLabel>
-                                    <OutlinedInput
+                                    <OutlinedInput dir="rtl"
                                         id="password"
                                         endAdornment={
                                             <InputAdornment position="end">
