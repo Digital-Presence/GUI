@@ -104,7 +104,7 @@ const AddNewChild=()=> {
                 <Stack direction="row" spacing={2}>
                     <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />}>
                         הוסף 
-                    </Button>
+                    </Button> // יפה לעשות כפתור מעוגל
                 </Stack>
             </ThemeProvider>
         </CacheProvider>
