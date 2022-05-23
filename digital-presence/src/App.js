@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import UpdateChild from './updataChild';
+import AddNewChild from './addNewChild'
 
 function App() {
   return (<>
-  <UpdateChild/>
+  <AddNewChild/>
   </>);
 }
 
