@@ -4,7 +4,7 @@ import UpdateChild from './updataChild';
 
 function App() {
   return (<>
-  <UpdateChild/>
+  <UpdateChild />
   </>);
 }
 

@@ -27,118 +27,107 @@ const cacheRtl = createCache({
     stylisPlugins: [prefixer, rtlPlugin],
 });
 
-const UpdateChild = () => {
-    const [show, setShow] = useState(false);
-
-
+const UpdateChild = (props) => {
+    const [idSearch, setIdSearch] = useState("");
+    const [showDetails, setShowDetails] = useState(false);
+    const checkIdExists = () => {
+        idSearch == "123" ? setShowDetails(true): setShowDetails(false);
+    }
+const udateDetails=()=>{
+    // עדכון פרטי הילד בשרת
+}
     return (<>
         <CacheProvider value={cacheRtl}>
             <ThemeProvider theme={theme}>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="ת.ז." variant="outlined" />
+                            <TextField label="ת.ז." variant="outlined" onChange={(e) => { setIdSearch(e.target.value) }} />
                         </div>
                     </Box>
                 </Box>
-                <Button variant="contained" endIcon={<SearchIcon />}>
+                <Button variant="contained" endIcon={<SearchIcon />} onClick={checkIdExists}>
                     חפש ילד
                 </Button>
-                {/* {{show && <AddNewChild/>}} */}
-                <Stack direction="row" spacing={2}>
-                    <Button variant="contained" endIcon={<RefreshIcon />}>
-                        עדכן
-                    </Button> // יפה לעשות כפתור מעוגל
-                </Stack>
+                {showDetails && <span>
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <div dir="rtl">
+                                <TextField label="שם פרטי" variant="standard" value="{props.firstName}"/>
+                            </div>
+                            <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                        </Box>
+                    </Box>
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <div dir="rtl">
+                                <TextField label="שם משפחה" variant="standard"value="{props.familyName}" />
+                            </div>
+                            <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                        </Box>
+                    </Box>
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <div dir="rtl">
+                                <TextField label="ת.ז." variant="standard" value="{props.childId}"/>
+                            </div>
+                            <FingerprintIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                        </Box>
+                    </Box>
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <div dir="rtl">
+                                <TextField label="שם אפוטרופוס" variant="standard" value="{props.apotropuseName}"/>
+                            </div>
+                            <SupervisorAccountIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                        </Box>
+                    </Box>
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <div dir="rtl">
+                                <TextField label="טלפון 1" variant="standard" value="{props.tellephone1}"/>
+                            </div>
+                            <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                        </Box>
+                    </Box>
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <div dir="rtl">
+                                <TextField label="טלפון 2" variant="standard" value="{props.tellephone2}"/>
+                            </div>
+                            <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                        </Box>
+                    </Box>
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <div dir="rtl">
+                                <TextField label="תאריך לידה" variant="standard" value="{props.dbo}"/>
+                            </div>
+                            <CalendarTodayIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                        </Box>
+                    </Box>
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <FormControl variant="standard" sx={{ m: 1, minWidth: 250 }}>
+                                <InputLabel id="demo-simple-select-standard-label">שם כיתה (לולאה של קוד כיתה)</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-standard-label"
+                                    id="demo-simple-select-standard">
+                                    <MenuItem value={10}>א\1</MenuItem>
+                                    <MenuItem value={15}>א\2</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </Box>
+                    <Stack direction="row" spacing={2}>
+                        <Button variant="contained" endIcon={<RefreshIcon />} onClick={udateDetails}>
+                            עדכן
+                        </Button> // יפה לעשות כפתור מעוגל
+                    </Stack>
+                </span>}
             </ThemeProvider>
         </CacheProvider>
     </>);
 }
 export default UpdateChild;
 
-{/* <Box sx={{ '& > :not(style)': { m: 1 } }}>
-<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-    <div dir="rtl">
-        <TextField label="ת.ז." variant="outlined" />
-    </div>
-</Box>
-</Box>
-<Button variant="contained" endIcon={<SearchIcon />}>
-חפש ילד
-</Button>
-
-<Box sx={{ '& > :not(style)': { m: 1 } }}>
-<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-    <div dir="rtl">
-        <TextField label="שם פרטי" variant="standard" />
-    </div>
-    <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-</Box>
-</Box>
-<Box sx={{ '& > :not(style)': { m: 1 } }}>
-<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-    <div dir="rtl">
-        <TextField label="שם משפחה" variant="standard" />
-    </div>
-    <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-</Box>
-</Box>
-<Box sx={{ '& > :not(style)': { m: 1 } }}>
-<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-    <div dir="rtl">
-        <TextField label="ת.ז." variant="standard" />
-    </div>
-    <FingerprintIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-</Box>
-</Box>
-
-<Box sx={{ '& > :not(style)': { m: 1 } }}>
-<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-    <div dir="rtl">
-        <TextField label="שם אפוטרופוס" variant="standard" />
-    </div>
-    <SupervisorAccountIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-</Box>
-</Box>
-<Box sx={{ '& > :not(style)': { m: 1 } }}>
-<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-    <div dir="rtl">
-        <TextField label="טלפון 1" variant="standard" />
-    </div>
-    <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-</Box>
-</Box>
-<Box sx={{ '& > :not(style)': { m: 1 } }}>
-<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-    <div dir="rtl">
-        <TextField label="טלפון 2" variant="standard" />
-    </div>
-    <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-</Box>
-</Box>
-<Box sx={{ '& > :not(style)': { m: 1 } }}>
-<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-    <div dir="rtl">
-        <TextField label="תאריך לידה" variant="standard" />
-    </div>
-    <CalendarTodayIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-</Box>
-</Box>
-<Box sx={{ '& > :not(style)': { m: 1 } }}>
-<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-    <FormControl variant="standard" sx={{ m: 1, minWidth: 250 }}>
-        <InputLabel id="demo-simple-select-standard-label">שם כיתה (לולאה של קוד כיתה)</InputLabel>
-        <Select
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard">
-            <MenuItem value={10}>א\1</MenuItem>
-            <MenuItem value={15}>א\2</MenuItem>
-        </Select>
-    </FormControl>
-</Box>
-</Box>
-<Stack direction="row" spacing={2}>
-<Button variant="contained" endIcon={<RefreshIcon />}>
-    עדכן
-</Button> // יפה לעשות כפתור מעוגל
-</Stack> */}
