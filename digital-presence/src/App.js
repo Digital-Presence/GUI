@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import CheckboxListSecondary from './addClass'
+import UpdateChild from './updataChild';
 
 function App() {
   return (<>
-  <CheckboxListSecondary/>
+  <UpdateChild/>
   </>);
 }
 
