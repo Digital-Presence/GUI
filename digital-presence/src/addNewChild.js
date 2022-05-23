@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import rtlPlugin from 'stylis-plugin-rtl';
@@ -26,14 +26,30 @@ const cacheRtl = createCache({
     stylisPlugins: [prefixer, rtlPlugin],
 });
 
-const AddNewChild=()=> {
+
+const AddNewChild = () => {
+    const childName = "";
+    const childFamily = "";
+    const identity = "";
+    const apotropos = "";
+    const phone1 = "";
+    const phone2 = "";
+    const date = new Date();
+    const checkValues=()=>{
+        if(childFamily&&childName&&identity&&apotropos&&phone1&&date){
+            console.log("the values are full!!!")
+        }
+        else {
+            console.log("Error!!!")
+        }
+    }
     return (<>
         <CacheProvider value={cacheRtl}>
             <ThemeProvider theme={theme}>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם פרטי" variant="standard" />
+                            <TextField label="שם פרטי" variant="standard" required onChange={(e) => childName = e.target.value} />
                         </div>
                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -41,7 +57,7 @@ const AddNewChild=()=> {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם משפחה" variant="standard" />
+                            <TextField label="שם משפחה" variant="standard" required onChange={(e) => childFamily = e.target.value} />
                         </div>
                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -49,16 +65,15 @@ const AddNewChild=()=> {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="ת.ז." variant="standard" />
+                            <TextField label="ת.ז." variant="standard" required onChange={(e) => identity = e.target.value} />
                         </div>
                         <FingerprintIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
                 </Box>
-
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם אפוטרופוס" variant="standard" />
+                            <TextField label="שם אפוטרופוס" variant="standard" required onChange={(e) => apotropos = e.target.value} />
                         </div>
                         <SupervisorAccountIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -66,7 +81,7 @@ const AddNewChild=()=> {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="טלפון 1" variant="standard" />
+                            <TextField label="טלפון 1" variant="standard" required onChange={(e) => phone1 = e.target.value} />
                         </div>
                         <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -74,7 +89,7 @@ const AddNewChild=()=> {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="טלפון 2" variant="standard" />
+                            <TextField label="טלפון 2" variant="standard" onChange={(e) => phone2 = e.target.value} />
                         </div>
                         <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -82,11 +97,11 @@ const AddNewChild=()=> {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="תאריך לידה" variant="standard" />
+                            <TextField label="תאריך לידה" variant="standard" required onChange={(e) => date = e.target.value} />
                         </div>
                         <CalendarTodayIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
-                </Box>               
+                </Box>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <FormControl variant="standard" sx={{ m: 1, minWidth: 250 }}>
@@ -94,15 +109,15 @@ const AddNewChild=()=> {
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard">
-                                <MenuItem value={10}>א\1</MenuItem>
-                                <MenuItem value={15}>א\2</MenuItem>
+                                <MenuItem value={10}>א1</MenuItem>
+                                <MenuItem value={15}>א2</MenuItem>
                             </Select>
                         </FormControl>
                     </Box>
                 </Box>
                 <Stack direction="row" spacing={2}>
-                    <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />}>
-                        הוסף 
+                    <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />} onClick={checkValues}>
+                        הוסף
                     </Button> // יפה לעשות כפתור מעוגל
                 </Stack>
             </ThemeProvider>
