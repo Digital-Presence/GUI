@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
-import UpdateChild from './updataChild';
+import ClassesOfTeacher from './classesOfTeacher';
+import NoResultsFound from './noResult';
 
 function App() {
   return (<>
-  <UpdateChild/>
+  < ClassesOfTeacher/>
+  <NoResultsFound/>
   </>);
 }
 
