@@ -30,13 +30,13 @@ const cacheRtl = createCache({
 const AddNewChild = () => {
     const [name, setName] = useState("");
     const [family, setFamily] = useState("");
-    const [id, setId] = useState("");
+    const [identity, setIdentity] = useState("");
     const [guardian, setGuardian] = useState("");
     const [phone1, setPhone1] = useState("");
     const [phone2, setPhone2] = useState("");
     const [date, setDate] = useState(new Date());
     const checkValues = () => {
-        if (family && name && id && guardian && phone1 && date) {
+        if (family && name && identity && guardian && phone1 && date) {
             console.log("the values are full!!!")
         }
         else {
@@ -66,7 +66,7 @@ const AddNewChild = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="ת.ז." variant="standard" required onChange={(e) => setId(e.target.value)} />
+                            <TextField label="ת.ז." variant="standard" required onChange={(e) => setIdentity(e.target.value)} />
                         </div>
                         <FingerprintIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>

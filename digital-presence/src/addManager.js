@@ -25,10 +25,10 @@ const cacheRtl = createCache({
 
 const AddManager = () => {
     const [name, setName] = useState("");
-    const [id, setId] = useState("");
+    const [identity, setIdentity] = useState("");
     const [password, setPassword] = useState("");
     const checkValues = () => {
-        if (name && id && password) {
+        if (name && identity && password) {
             console.log("the values are full!!!");
         }
         else {
@@ -50,7 +50,7 @@ const AddManager = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="ת.ז." variant="standard" onChange={(e) => setId(e.target.value)} />
+                            <TextField label="ת.ז." variant="standard" onChange={(e) => setIdentity(e.target.value)} />
                         </div>
                         <FingerprintIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
