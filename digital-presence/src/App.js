@@ -1,10 +1,10 @@
 import React from 'react';
+import AddClass from './addClass';
 import './App.css';
-import AddNewChild from './addNewChild'
 
 function App() {
   return (<>
-  <AddNewChild/>
+    <AddClass />
   </>);
 }
 

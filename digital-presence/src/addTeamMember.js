@@ -25,13 +25,26 @@ const cacheRtl = createCache({
 });
 
 const AddTeamMember = () => {
+    const [name, setName] = useState("");
+    const [id, setId] = useState("");
+    const [password, setPassword] = useState("");
+    const [code, setCode] = useState("");
+    const checkValues = () => {
+        if (name && id && password && code) {
+            console.log("the values are full!!!");
+        }
+        else {
+            console.log("Error!!!");
+        }
+    }
+    //הפעלת הפונקציה של הוספת חבר צוות חדש ולשלוח את הפרמטרים
     return (<>
         <CacheProvider value={cacheRtl}>
             <ThemeProvider theme={theme}>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם" variant="standard" />
+                            <TextField label="שם" variant="standard" onChange={(e) => setName(e.target.value)} />
                         </div>
                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -39,7 +52,7 @@ const AddTeamMember = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="ת.ז." variant="standard" />
+                            <TextField label="ת.ז." variant="standard" onChange={(e) => setId(e, target.value)} />
                         </div>
                         <FingerprintIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -47,7 +60,7 @@ const AddTeamMember = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="סיסמא" variant="standard" />
+                            <TextField label="סיסמא" variant="standard" onChange={(e) => setPassword(e, target.value)} />
                         </div>
                         <VisibilityOffIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -55,7 +68,7 @@ const AddTeamMember = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="קוד מוסד" variant="standard" />
+                            <TextField label="קוד מוסד" variant="standard" onChange={(e) => setCode(e, target.value)} />
                         </div>
                         <KeyIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -77,7 +90,7 @@ const AddTeamMember = () => {
                     </Box>
                 </Box>
                 <Stack direction="row" spacing={2}>
-                    <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />}>
+                    <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />} onClick={checkValues}>
                         הוסף
                     </Button>
                 </Stack>

@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React, { Children, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import rtlPlugin from 'stylis-plugin-rtl';
@@ -28,28 +28,29 @@ const cacheRtl = createCache({
 
 
 const AddNewChild = () => {
-    const childName = "";
-    const childFamily = "";
-    const identity = "";
-    const apotropos = "";
-    const phone1 = "";
-    const phone2 = "";
-    const date = new Date();
-    const checkValues=()=>{
-        if(childFamily&&childName&&identity&&apotropos&&phone1&&date){
+    const [name, setName] = useState("");
+    const [family, setFamily] = useState("");
+    const [id, setId] = useState("");
+    const [guardian, setGuardian] = useState("");
+    const [phone1, setPhone1] = useState("");
+    const [phone2, setPhone2] = useState("");
+    const [date, setDate] = useState(new Date());
+    const checkValues = () => {
+        if (family && name && id && guardian && phone1 && date) {
             console.log("the values are full!!!")
         }
         else {
             console.log("Error!!!")
         }
     }
+    //הפעלת הפונקציה של הוספת ילד ולשלוח את הפרמטרים
     return (<>
         <CacheProvider value={cacheRtl}>
             <ThemeProvider theme={theme}>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם פרטי" variant="standard" required onChange={(e) => childName = e.target.value} />
+                            <TextField label="שם פרטי" variant="standard" required onChange={(e) => setName(e.target.value)} />
                         </div>
                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -57,7 +58,7 @@ const AddNewChild = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם משפחה" variant="standard" required onChange={(e) => childFamily = e.target.value} />
+                            <TextField label="שם משפחה" variant="standard" required onChange={(e) => setFamily(e.target.value)} />
                         </div>
                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -65,7 +66,7 @@ const AddNewChild = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="ת.ז." variant="standard" required onChange={(e) => identity = e.target.value} />
+                            <TextField label="ת.ז." variant="standard" required onChange={(e) => setId(e.target.value)} />
                         </div>
                         <FingerprintIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -73,7 +74,7 @@ const AddNewChild = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם אפוטרופוס" variant="standard" required onChange={(e) => apotropos = e.target.value} />
+                            <TextField label="שם אפוטרופוס" variant="standard" required onChange={(e) => setGuardian(e.target.value)} />
                         </div>
                         <SupervisorAccountIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -81,7 +82,7 @@ const AddNewChild = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="טלפון 1" variant="standard" required onChange={(e) => phone1 = e.target.value} />
+                            <TextField label="טלפון 1" variant="standard" required onChange={(e) => setPhone1(e.target.value)} />
                         </div>
                         <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -89,7 +90,7 @@ const AddNewChild = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="טלפון 2" variant="standard" onChange={(e) => phone2 = e.target.value} />
+                            <TextField label="טלפון 2" variant="standard" onChange={(e) => setPhone2(e.target.value)} />
                         </div>
                         <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -97,7 +98,7 @@ const AddNewChild = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="תאריך לידה" variant="standard" required onChange={(e) => date = e.target.value} />
+                            <TextField label="תאריך לידה" variant="standard" required onChange={(e) => setDate(e.target.value)} />
                         </div>
                         <CalendarTodayIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
