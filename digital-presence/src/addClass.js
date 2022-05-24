@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import rtlPlugin from 'stylis-plugin-rtl';
@@ -26,13 +26,17 @@ const cacheRtl = createCache({
 });
 
 const AddClass = () => {
+    const [name,setName]=useState("");
+    const [institution,setInstitution]=useState("");
+    const [teamMember,setTeamMember]=useState<string>("");//סטייט של מערך החברי צוות המלמדים בכיתה החדשה 
+    //הפעלת הפונקציה המוסיפה כיתה חדשה ושולחת את הפרמטרים
     return (<div direction="rtl">
         <CacheProvider value={cacheRtl}> 
             <ThemeProvider theme={theme}>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם קבוצה" variant="standard" />
+                            <TextField label="שם קבוצה" variant="standard" onChange={(e)=>setName(e.target.value)} />
                         </div>
                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -40,7 +44,7 @@ const AddClass = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                            <InputLabel id="demo-simple-select-standard-label">סוג מוסד</InputLabel>
+                            <InputLabel id="demo-simple-select-standard-label" onChange={(e)=>setInstitution(e.target.value)} >סוג מוסד</InputLabel>
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard">
@@ -49,8 +53,7 @@ const AddClass = () => {
                             </Select>
                         </FormControl>
                     </Box>
-                </Box>
-              
+                </Box> 
                 <div>מורות הקבוצה</div>
                <ListOfTeachers/>
                <Stack direction="row" spacing={2} >
@@ -62,4 +65,5 @@ const AddClass = () => {
         </CacheProvider>
     </div>);
 }
+
 export default AddClass;

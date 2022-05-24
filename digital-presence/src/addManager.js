@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import rtlPlugin from 'stylis-plugin-rtl';
@@ -23,14 +23,26 @@ const cacheRtl = createCache({
     stylisPlugins: [prefixer, rtlPlugin],
 });
 
-const AddManager=()=> {
+const AddManager = () => {
+    const [name, setName] = useState("");
+    const [identity, setIdentity] = useState("");
+    const [password, setPassword] = useState("");
+    const checkValues = () => {
+        if (name && identity && password) {
+            console.log("the values are full!!!");
+        }
+        else {
+            console.log("Error!!!");
+        }
+    }
+    //הפעלת הפונקציה של הוספת מנהל מוסד ולשלוח את הפרמטרים
     return (<>
         <CacheProvider value={cacheRtl}>
             <ThemeProvider theme={theme}>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם" variant="standard" />
+                            <TextField label="שם" variant="standard" onChange={(e) => setName(e.target.value)} />
                         </div>
                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -38,7 +50,7 @@ const AddManager=()=> {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="ת.ז." variant="standard" />
+                            <TextField label="ת.ז." variant="standard" onChange={(e) => setIdentity(e.target.value)} />
                         </div>
                         <FingerprintIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -46,13 +58,13 @@ const AddManager=()=> {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="סיסמה" variant="standard" />
+                            <TextField label="סיסמה" variant="standard" onChange={(e) => setPassword(e.target.value)} />
                         </div>
                         <VisibilityOffIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
                 </Box>
                 <Stack direction="row" spacing={2}>
-                    <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />}>
+                    <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />} onClick={checkValues}>
                         הרשם
                     </Button>
                 </Stack>
