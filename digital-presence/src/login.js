@@ -1,4 +1,5 @@
-import react, { useState } from "react"
+import react, { useState } from "react";
+import axios from 'axios';
 import {
     Card, CssBaseline, Button, TextField, Link, Box, Typography, Container, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton
 } from '@mui/material';
@@ -9,6 +10,13 @@ const Login = () => {
     const users = ["012", "124", "456", "354"];
     const [user, setUser] = useState("");
     const checkPassword = () => {
+        axios.get('url/')
+            .then(result => {
+                console.log(result.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
         users.forEach(u => {
             if (u === user && password === passwordd)
                 console.log("welcome!!!")
