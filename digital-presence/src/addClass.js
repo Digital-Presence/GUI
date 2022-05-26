@@ -15,6 +15,7 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import Checkbox from '@mui/material/Checkbox';
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import ListOfTeachers from './listOfTeachers';
+
 import axios from 'axios';
 import Class from './class';
 
@@ -34,7 +35,7 @@ const AddClass = () => {
     const _class = new Class(classId, name, institution)
     const baseUrl = 'https://localhost:44370/';
     const checkPassword = () => {
-        axios.get(`${baseUrl}/api/ManagerController?class1=_class&teamMembers={}`)
+        axios.get(`${baseUrl}/api/ManagerController?class1=${_class}&teamMembers=${teamMember}`)
             .then(result => {
                 console.log(result.data);
             })
