@@ -1,27 +1,24 @@
 import react, { useState } from "react";
-import axios from 'axios';
+import axios from './config/axios';
+import { Link, useNavigate } from 'react-router-dom'
 import {
-    Card, CssBaseline, Button, TextField, Link, Box, Typography, Container, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton
+    Card, CssBaseline, Button, TextField, Box, Typography, Container, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton
 } from '@mui/material';
 
 const Login = () => {
-    const passwordd = "123";
     const [password, setPassword] = useState("");
-    const users = ["012", "124", "456", "354"];
     const [user, setUser] = useState("");
+    const navigate = useNavigate();
     const checkPassword = () => {
-        axios.get('url/')
+        axios.get('ManagerController/SearchManager?password='+  password )
             .then(result => {
                 console.log(result.data);
+                navigate("/ClassesOfTeachers");
             })
             .catch(error => {
                 console.log(error);
             });
-        users.forEach(u => {
-            if (u === user && password === passwordd)
-                console.log("welcome!!!")
-        });
-    }
+    };
 
     return (
         <div className="login">
@@ -76,15 +73,16 @@ const Login = () => {
                                     כניסה
                                 </Button>
                             </div>
-                            <Link variant="body2">
+                            {/* <Link variant="body2">
                                 יצירת חשבון חדש
-                            </Link>
+                            </Link> */}
                         </Box>
                     </Box>
                     <p className="copy">
                     </p>
                 </Container>
             </Card>
+            {/* <Link to="/Login">login</Link> */}
         </div>
     )
 }
