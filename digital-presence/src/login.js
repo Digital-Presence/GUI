@@ -5,23 +5,20 @@ import {
 } from '@mui/material';
 
 const Login = () => {
-    const passwordd = "123";
     const [password, setPassword] = useState("");
-    const users = ["012", "124", "456", "354"];
     const [user, setUser] = useState("");
+    const baseUrl = 'https://localhost:44370/';
+
     const checkPassword = () => {
-        axios.get('url/')
+        axios.get(`${baseUrl}api/ManagerController?password=${password}`)
             .then(result => {
                 console.log(result.data);
             })
             .catch(error => {
                 console.log(error);
             });
-        users.forEach(u => {
-            if (u === user && password === passwordd)
-                console.log("welcome!!!")
-        });
-    }
+    };
+
 
     return (
         <div className="login">

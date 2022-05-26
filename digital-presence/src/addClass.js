@@ -15,6 +15,8 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import Checkbox from '@mui/material/Checkbox';
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import ListOfTeachers from './listOfTeachers';
+import axios from 'axios';
+import Class from './class';
 
 const theme = createTheme({
     direction: 'rtl', // Both here and <body dir="rtl">
@@ -24,19 +26,42 @@ const cacheRtl = createCache({
     key: 'muirtl',
     stylisPlugins: [prefixer, rtlPlugin],
 });
-
 const AddClass = () => {
-    const [name,setName]=useState("");
-    const [institution,setInstitution]=useState("");
-    const [teamMember,setTeamMember]=useState<string>("");//סטייט של מערך החברי צוות המלמדים בכיתה החדשה 
+    const [name, setName] = useState("");
+    const [institution, setInstitution] = useState("");
+    const [classId, setClassId] = useState("");
+    const [teamMember, setTeamMember] = useState([1]);//סטייט של מערך החברי צוות המלמדים בכיתה החדשה
+    const _class = new Class(classId, name, institution)
+    const baseUrl = 'https://localhost:44370/';
+    const checkPassword = () => {
+        axios.get(`${baseUrl}/api/ManagerController?class1=_class&teamMembers={}`)
+            .then(result => {
+                console.log(result.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        users.forEach(u => {
+            if (u === user && password === passwordd)
+                console.log("welcome!!!")
+        });
+    }
     //הפעלת הפונקציה המוסיפה כיתה חדשה ושולחת את הפרמטרים
     return (<div direction="rtl">
-        <CacheProvider value={cacheRtl}> 
+        <CacheProvider value={cacheRtl}>
             <ThemeProvider theme={theme}>
+            <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                        <div dir="rtl">
+                            <TextField label="קוד קבוצה" variant="standard" onChange={(e) => setClassId(e.target.value)} />
+                        </div>
+                        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                    </Box>
+                </Box>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם קבוצה" variant="standard" onChange={(e)=>setName(e.target.value)} />
+                            <TextField label="שם קבוצה" variant="standard" onChange={(e) => setName(e.target.value)} />
                         </div>
                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -44,7 +69,7 @@ const AddClass = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                            <InputLabel id="demo-simple-select-standard-label" onChange={(e)=>setInstitution(e.target.value)} >סוג מוסד</InputLabel>
+                            <InputLabel id="demo-simple-select-standard-label" onChange={(e) => setInstitution(e.target.value)} >סוג מוסד</InputLabel>
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard">
@@ -53,10 +78,10 @@ const AddClass = () => {
                             </Select>
                         </FormControl>
                     </Box>
-                </Box> 
+                </Box>
                 <div>מורות הקבוצה</div>
-               <ListOfTeachers/>
-               <Stack direction="row" spacing={2} >
+                <ListOfTeachers />
+                <Stack direction="row" spacing={2} >
                     <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />}>
                         הרשם
                     </Button>
