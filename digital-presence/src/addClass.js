@@ -15,7 +15,9 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import Checkbox from '@mui/material/Checkbox';
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import ListOfTeachers from './listOfTeachers';
-
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Router from './routes';
 const theme = createTheme({
     direction: 'rtl', // Both here and <body dir="rtl">
 });
@@ -25,18 +27,26 @@ const cacheRtl = createCache({
     stylisPlugins: [prefixer, rtlPlugin],
 });
 
+
 const AddClass = () => {
-    const [name,setName]=useState("");
-    const [institution,setInstitution]=useState("");
-    const [teamMember,setTeamMember]=useState<string>("");//סטייט של מערך החברי צוות המלמדים בכיתה החדשה 
+    const nav = useNavigate();
+ 
+    const [name, setName] = useState("");
+    const [institution, setInstitution] = useState("");
+
+    const c=()=>{
+        console.log("yse");
+        nav("/Login");
+        }
     //הפעלת הפונקציה המוסיפה כיתה חדשה ושולחת את הפרמטרים
     return (<div direction="rtl">
-        <CacheProvider value={cacheRtl}> 
+        <Link to='/Login' >Login</Link>
+        <CacheProvider value={cacheRtl}>
             <ThemeProvider theme={theme}>
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <div dir="rtl">
-                            <TextField label="שם קבוצה" variant="standard" onChange={(e)=>setName(e.target.value)} />
+                            <TextField label="שם קבוצה" variant="standard" onChange={(e) => setName(e.target.value)} />
                         </div>
                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                     </Box>
@@ -44,7 +54,7 @@ const AddClass = () => {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                            <InputLabel id="demo-simple-select-standard-label" onChange={(e)=>setInstitution(e.target.value)} >סוג מוסד</InputLabel>
+                            <InputLabel id="demo-simple-select-standard-label" onChange={(e) => setInstitution(e.target.value)} >סוג מוסד</InputLabel>
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard">
@@ -53,11 +63,11 @@ const AddClass = () => {
                             </Select>
                         </FormControl>
                     </Box>
-                </Box> 
+                </Box>
                 <div>מורות הקבוצה</div>
-               <ListOfTeachers/>
-               <Stack direction="row" spacing={2} >
-                    <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />}>
+                <ListOfTeachers />
+                <Stack direction="row" spacing={2} >
+                    <Button variant="contained" startIcon={<KeyboardDoubleArrowLeftIcon />} onClick={c}>
                         הרשם
                     </Button>
                 </Stack>
