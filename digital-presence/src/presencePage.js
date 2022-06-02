@@ -12,9 +12,9 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 const PresencePage = () => {
 
   const arr = [
-    { name: "h", presence: true, permition: false },
-    { name: "i", presence: false, permition: true },
-    { name: "g", presence: true, permition: true },
+    { name: "Eli Choen", presence: true, permition: false },
+    { name: "Izzi Levi", presence: false, permition: true },
+    { name: "Gal Paz", presence: true, permition: true },
   ];
 
   const arrMap = arr.map(item =>
@@ -24,27 +24,27 @@ const PresencePage = () => {
       <FormControlLabel control={<Checkbox defaultChecked />} />
     </TableCell>
     <TableCell component="th" scope="row">
-      <FormControl variant="standard" sx={{ m: 1, minWidth: 50 }}>
-        <InputLabel id="demo-simple-select-standard-label">סיבה</InputLabel>
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
+        <InputLabel id="demo-simple-select-standard-label">Reasson</InputLabel>
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard">
           <MenuItem value=""><em>None</em></MenuItem>
-          <MenuItem value={10}>מאושר</MenuItem>
-          <MenuItem value={15}>לא מאושר</MenuItem>
+          <MenuItem value={10}>Confirmed</MenuItem>
+          <MenuItem value={15}>Not confirmed</MenuItem>
         </Select>
       </FormControl>
     </TableCell>
   </TableRow >));
 
   return (
-    <TableContainer table sx={{ direction: "rtl" }}>
+    <TableContainer table>
       <Table sx={{ minWidth: 50 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>שם התלמיד</TableCell>
-            <TableCell padding="checkbox" align="right">נוכחות</TableCell>
-            <TableCell align="right">סיבה</TableCell>
+            <TableCell sx={{ textAlign: 'left' }}>Student name</TableCell>
+            <TableCell  padding="checkbox" sx={{ textAlign: 'left' }}>Presence</TableCell>
+            <TableCell sx={{ textAlign: 'left' }} >Reasson</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>{arrMap}</TableBody>

@@ -28,7 +28,7 @@ const cacheRtl = createCache({
 const AddClass = () => {
     const [name,setName]=useState("");
     const [institution,setInstitution]=useState("");
-    const [teamMember,setTeamMember]=useState<string>("");//סטייט של מערך החברי צוות המלמדים בכיתה החדשה 
+    const [teamMember,setTeamMember]=useState<String>("");//סטייט של מערך החברי צוות המלמדים בכיתה החדשה 
     //הפעלת הפונקציה המוסיפה כיתה חדשה ושולחת את הפרמטרים
     return (<div direction="rtl">
         <CacheProvider value={cacheRtl}> 
