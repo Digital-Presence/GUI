@@ -30,19 +30,19 @@ const ListOfTeachers = () => {
                 return (
                     <ListItem key={value} disablePadding >
                         <ListItemButton>
-                            <ListItemAvatar>
-                                <Avatar
-                                    alt={`Avatar n°${value + 1}`}
-                                    src={`/static/images/avatar/${value + 1}.jpg`}
-                                />
-                            </ListItemAvatar>
-                            <ListItemText id={labelId} primary={`המורה שושנה לוי`} sx={{ textAlign: "center" }} />
                             <Checkbox color='default'
                                 edge="end"
                                 onChange={handleToggle(value)}
                                 checked={checked.indexOf(value) !== -1}
                                 inputProps={{ 'aria-labelledby': labelId }}
                             />
+                            <ListItemText id={labelId} primary={`Teacher Shoshana Levi`} sx={{ textAlign: "center" }} />
+                            <ListItemAvatar>
+                                <Avatar
+                                    alt={`Avatar n°${value + 1}`}
+                                    src={`/static/images/avatar/${value + 1}.jpg`}
+                                />
+                            </ListItemAvatar>
                         </ListItemButton>
                     </ListItem>
                 );

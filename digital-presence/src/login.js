@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import {
     Card, CssBaseline, Button, TextField, Link, Box, Typography, Container, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton
@@ -36,24 +36,24 @@ const Login = () => {
                         flexDirection: 'column',
                         alignItems: 'center',
                     }}>
-                        <Typography
+                        {/* <Typography
                             component="h1" variant="h2" >
-                            כניסה          </Typography>
+                                כניסה      </Typography> */}
                         <Box className="box2" component="form" noValidate >
-                            <TextField dir="rtl"
+                            <TextField 
                                 onChange={(e) => setUser(e.target.value)}
                                 margin="normal"
                                 required
                                 fullWidth
                                 id="identity"
-                                label="שם משתמש"
+                                label="User name"
                                 name="identity"
                                 autoComplete="identity"
                                 autoFocus
                             />
                             <FormControl fullWidth required variant="outlined">
-                                <InputLabel htmlFor="password">סיסמא</InputLabel>
-                                <OutlinedInput dir="rtl"
+                                <InputLabel htmlFor="password">Password</InputLabel>
+                                <OutlinedInput 
                                     onChange={(e) => setPassword(e.target.value)}
                                     id="password"
                                     endAdornment={
@@ -64,7 +64,7 @@ const Login = () => {
                                             </IconButton>
                                         </InputAdornment>
                                     }
-                                    label="סיסמא"
+                                    label="Password"
                                 />
                             </FormControl>
                             <div className="button1">
@@ -73,11 +73,11 @@ const Login = () => {
                                     type="submit"
                                     fullWidth
                                     variant="contained">
-                                    כניסה
+                                    Sighn in
                                 </Button>
                             </div>
                             <Link variant="body2">
-                                יצירת חשבון חדש
+                                Create a new account
                             </Link>
                         </Box>
                     </Box>

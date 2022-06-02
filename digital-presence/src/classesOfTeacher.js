@@ -8,7 +8,7 @@ const ClassesOfTeacher = (props) => {
     const [listOfChildren, setListOfChildren] = useState(props.listOfClasses);
 
     const findAllChildrenOfTeacher = () => {
-        setListOfChildren(['א1', 'א2', 'ב1', 'ג1']);
+        setListOfChildren(['A1', 'A2', 'B1', 'C1']);
         // אמור לקבל רשימה של הכיתות
         // בכניסה מקיש ת.ז. אם מורה - בודק האם יש לו כמה כיתות ומציג אותם ושולח את רשימת הכיתות 
         // ואם אין כיתות מציג אין תוצאות מציג קומפוננטה שונה 
@@ -23,7 +23,7 @@ const ClassesOfTeacher = (props) => {
                 <Card sx={{ maxWidth: '30vw' }}>
                     <CardActionArea sx={{ minHeight: '30vh' }}>
                         <Typography gutterBottom variant="h3" component="div" sx={{ textAlign: "center" }} onClick={() => moveToClass()}>
-                            כתה א1
+                            Class A1
                         </Typography>
                     </CardActionArea>
                 </Card>
