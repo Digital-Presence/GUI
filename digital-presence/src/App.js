@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import Form from './form';
+import TryNav from './tryNav';
 
 function App() {
   return (<>
-  <Form/>
+  <TryNav/>
   </>);
 }
 

@@ -37,7 +37,7 @@ const Login = () => {
                         alignItems: 'center',
                     }}>
                         <Typography
-                            component="h1" variant="h5">
+                            component="h1" variant="h2" >
                             כניסה          </Typography>
                         <Box className="box2" component="form" noValidate >
                             <TextField dir="rtl"

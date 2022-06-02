@@ -1,0 +1,27 @@
+.btn {
+    padding: .45rem 1.5rem .35rem;
+}
+
+.gradient-custom {
+    margin: 0%;
+    /* fallback for old browsers */
+    /* background: #c471f5; */
+    background: #1976d2;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgb(96, 67, 242), rgba(250, 113, 205, 1))
+}
+
+.h1 {
+    margin: 0%;
+    text-align: center;
+    font-size: 13vh;
+}
+.endPage{
+   font-size: 22vh;
+    margin: 0%;
+    direction: rtl;
+    text-align: center;
+}
